@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أبو جمال | CyberHunter - خبير الأمن السيبراني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0d1117;
+            --secondary: #161b22;
+            --accent: #ff6b00;
+            --accent-dark: #d45a00;
+            --text: #f0f6fc;
+            --text-secondary: #8b949e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 107, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 107, 0, 0.1) 0%, transparent 20%),
+                linear-gradient(to bottom, var(--primary), var(--secondary));
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(13, 17, 23, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 107, 0, 0.3);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), #ff9d00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--accent);
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: var(--accent);
+            color: #000;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-title span {
+            display: block;
+            color: var(--accent);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .hero-quote {
+            background: rgba(22, 27, 34, 0.7);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            border: 2px solid var(--accent);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: #000;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(13, 17, 23, 0.8) 0%, rgba(255, 107, 0, 0.2) 100%);
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-card {
+            background: rgba(22, 27, 34, 0.7);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+            border-color: var(--accent);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-items {
+            list-style: none;
+        }
+        
+        .skill-items li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-items li::before {
+            content: '•';
+            color: var(--accent);
+            margin-left: 10px;
+            font-size: 1.5rem;
+            line-height: 0;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: rgba(22, 27, 34, 0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .project-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tag {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            background: rgba(22, 27, 34, 0.7);
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+        }
+        
+        .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .contact-methods {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-methods li {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            min-width: 40px;
+        }
+        
+        .contact-details {
+            flex: 1;
+        }
+        
+        .contact-label {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .contact-value {
+            color: var(--text-secondary);
+        }
+        
+        .contact-form {
+            background: rgba(22, 27, 34, 0.7);
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(13, 17, 23, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 13, 18, 0.95);
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 107, 0, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            border-right: 2px solid var(--accent);
+            padding-right: 1rem;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                color: var(--text);
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt logo-icon"></i>
+                    <h1>Abu Jamal | CyberHunter</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="active">الرئيسية</a></li>
+                        <li><a href="#about">من أنا</a></li>
+                        <li><a href="#skills">مهاراتي</a></li>
+                        <li><a href="#projects">مشاريعي</a></li>
+                        <li><a href="#contact">تواصل معي</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    أبو جمال مرشد الشوكي
+                    <span>خبير الأمن السيبراني - صائد المبتزين - مقاتل ضد المليشيات</span>
+                </h1>
+                <p class="hero-subtitle">مقاتل في ساحات الحرب، ومحارب في الفضاء السيبراني</p>
+                
+                <div class="hero-quote">
+                    <p>"نحن لا نُقاتل من أجل الشهرة، بل من أجل الكرامة. لا نكشف المجرمين لنُظهر أنفسنا، بل لنحمي من لا يستطيع أن يحمي نفسه."</p>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">تواصل معي</a>
+                    <a href="#projects" class="btn btn-secondary">مشاريعي</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">من هو أبو جمال؟</h2>
+                <p class="section-subtitle">ابن الشهيد البطل "مرشد محمد مرشد الشوكي" وأحمل رسالته بالنار والنور</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>أبو جمال عبدالناصر مرشد الشوكي</h3>
+                    <p>اسمي أبو جمال عبدالناصر مرشد الشوكي، أقاتل في ساحات الحرب، وأحارب في الفضاء السيبراني. أنا ابن الشهيد البطل "مرشد محمد مرشد الشوكي" وأحمل رسالته بالنار والنور.</p>
+                    <p>أنا مقاتل في جبهة الفاخر ضد الحوثي، وقائد فريق كشف وملاحقة الخونة والعملاء. ابن أول شهيد من العود، وامتداد لدمه الذي يسري في عروقي كقوة دافعة نحو الحق والعدالة.</p>
+                    <p>هذا الموقع يمثل صوت الحق والردع في العالم الرقمي والميداني. أنشئ لحماية العفيفات، وردع الذئاب، وكشف الطُغاة، وخدمة الوطن.</p>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Abu Jamal - Cyber Security Expert">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">مهاراتي</h2>
+                <p class="section-subtitle">مجموعة المهارات التي أتمتع بها في مجال الأمن السيبراني والتقنيات المتقدمة</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-shield-alt skill-icon"></i>
+                    <h3 class="skill-title">الأمن السيبراني</h3>
+                    <ul class="skill-items">
+                        <li>تحليل الثغرات والتهديدات</li>
+                        <li>بناء أنظمة حماية متقدمة للشبكات</li>
+                        <li>تطوير أدوات استخبارات رقمية لمكافحة الابتزاز</li>
+                        <li>كشف الصفحات المزيفة وأنظمة التصيّد</li>
+                        <li>حماية حسابات التواصل من الاختراق</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <i class="fas fa-brain skill-icon"></i>
+                    <h3 class="skill-title">الذكاء الاصطناعي والأمن</h3>
+                    <ul class="skill-items">
+                        <li>تطوير أدوات باستخدام Python + AI للكشف عن النشاطات المشبوهة</li>
+                        <li>دمج الذكاء الاصطناعي في التحقيقات الرقمية</li>
+                        <li>تحليل البيانات الضخمة لاكتشاف الأنماط الإجرامية</li>
+                        <li>بناء أنظمة تنبؤية للهجمات السيبرانية</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <i class="fas fa-network-wired skill-icon"></i>
+                    <h3 class="skill-title">الشبكات و Mikrotik</h3>
+                    <ul class="skill-items">
+                        <li>تصميم شبكات Wi-Fi محمية باستخدام Hotspot</li>
+                        <li>تطوير واجهات دخول (Login Pages) احترافية</li>
+                        <li>ربط الإنترنت بخوادم مراقبة ومصادقة ذكية</li>
+                        <li>بناء أنظمة شبكات متقدمة للشركات والمؤسسات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">مشاريعي البارزة</h2>
+                <p class="section-subtitle">أهم المشاريع التي قمت بتطويرها لخدمة المجتمع ومكافحة الجرائم الإلكترونية</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="CyberHunter Web">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CyberHunter Web</h3>
+                        <p class="project-description">نظام ذكي لملاحقة المبتزين ومرتكبي الجرائم الإلكترونية، يتتبع أرقام وهمية، يحلل الرسائل، ويرسل تقارير آلية للبريد والتليجرام.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">الأمن السيبراني</span>
+                            <span class="project-tag">الذكاء الاصطناعي</span>
+                            <span class="project-tag">مكافحة الابتزاز</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Phishing Detector v2.0">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Phishing Detector v2.0</h3>
+                        <p class="project-description">منظومة تعتمد على الذكاء الاصطناعي لاكتشاف الصفحات المزيفة قبل وقوع الضحايا، مع دقة تصل إلى 98.7% في كشف محاولات التصيّد.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">كشف التصيّد</span>
+                            <span class="project-tag">الذكاء الاصطناعي</span>
+                            <span class="project-tag">حماية المستخدمين</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="نظام حماية الشركات والبنوك">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">نظام حماية الشركات والبنوك</h3>
+                        <p class="project-description">نظام تحت التطوير يهدف لإنشاء "درع رقمي يمني" للمنشآت من الهجمات الداخلية والخارجية، مع خاصية الإغلاق الذاتي عند كشف الاختراق.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">حماية المؤسسات</span>
+                            <span class="project-tag">الأمن المالي</span>
+                            <span class="project-tag">المراقبة الذكية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">تواصل معي</h2>
+                <p class="section-subtitle">للاستفسارات أو طلبات الخدمات الأمنية، يمكنك التواصل معي عبر الوسائل التالية</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 class="contact-title">معلومات التواصل</h3>
+                    
+                    <ul class="contact-methods">
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <div class="contact-label">البريد الإلكتروني</div>
+                                <div class="contact-value">jamalmorshed99@gmail.com</div>
+                                <div class="contact-value">abujamalhack@mail2tor.com</div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <div class="contact-details">
+                                <div class="contact-label">التليجرام</div>
+                                <div class="contact-value">@Abu_Jamal771</div>
+                                <div class="contact-value">@ABU_JAMAL777</div>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="hero-quote">
+                        <p>"نحن لا نُقاتل من أجل الشهرة، بل من أجل الكرامة. لا نكشف المجرمين لنُظهر أنفسنا، بل لنحمي من لا يستطيع أن يحمي نفسه."</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 class="contact-title">أرسل رسالة</h3>
+                    
+                    <form>
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">الموضوع</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">الرسالة</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--accent);"></i>
+                        <span style="font-size: 1.5rem; font-weight: bold; margin-right: 10px;">Abu Jamal | CyberHunter</span>
+                    </div>
+                    <p class="footer-quote">"هذا الموقع يمثل صوت الحق والردع في العالم الرقمي والميداني. أنشئ لحماية العفيفات، وردع الذئاب، وكشف الطُغاة، وخدمة الوطن."</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من أنا</a></li>
+                        <li><a href="#skills">مهاراتي</a></li>
+                        <li><a href="#projects">مشاريعي</a></li>
+                        <li><a href="#contact">تواصل معي</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-title">تواصل معي</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope" style="color: var(--accent); margin-left: 5px;"></i> jamalmorshed99@gmail.com</li>
+                        <li><i class="fab fa-telegram" style="color: var(--accent); margin-left: 5px;"></i> @Abu_Jamal771</li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 أبو جمال | CyberHunter. جميع الحقوق محفوظة.</p>
+                <p>ابن الشهيد البطل "مرشد محمد مرشد الشوكي" - امتداد لدمه بالنار والنور</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+    </script>
+</body>
+</html>
